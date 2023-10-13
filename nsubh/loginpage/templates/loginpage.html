@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        background: #003893 url("https://www.nova.edu/design-construction/Images/Nova%20Southeastern-120%20copy.jpg") no-repeat center center fixed;
+        webkit-background-size: cover;
+        background-size: cover;
+        font-size: .9em;
+        font: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .credentials {
+        background-color: transparent;
+        border-radius: 0px;
+        margin-top: 0;
+        padding: 0px;
+    }
+
+    #login,
+    .contentBox {
+        margin-top: 10vh !important;
+        margin-bottom: 100px !important;
+        max-width: 350px;
+        height: auto;
+        display: inline-block;
+        padding: 1em;
+        background: #000099;
+        background: rgba(0, 0, 153, 0.85);
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        position: absolute;
+        right: 6%;
+    }
+
+    login,
+    .contentBox {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2% !important;
+        margin-bottom: 2% !important;
+    }
+
+    #footer {
+        margin-top: 27px;
+        color: #fff;
+        /* text-align: center; */
+        font-weight: normal;
+    }
+
+    form {
+        display: block;
+        margin-top: 0em;
+        margin-block-end: 1em;
+    }
+
+    .credentials .btn {
+        font-weight: bold;
+        background: #687379;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        word-spacing: 4px;
+    }
+
+    .btn-block {
+        display: block;
+        width: 100%;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        margin: 0;
+        font: inherit;
+        color: inherit;
+    }
+
+    .credentials img {
+        display: block;
+        height: auto;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .alert {
+        margin-bottom: 8px;
+    }
+
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    #footer a {
+        color: #fff;
+    }
+
+    a {
+        color: #337ab7;
+        text-decoration: none;
+    }
+
+    form input[type="text"],
+    form input[type="password"] {
+        width: 95%;
+        height: 50px;
+        padding-left: 15px;
+        font-size: 1.2em;
+        color: #666D70;
+        border: 1px solid #666D70;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-box-shadow: 0px 0px 1px #666d70;
+        box-shadow: 0px 0px 1px #666d70;
+    }
+
+    form input {
+        margin-bottom: 8px;
+        display: block;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>NSU Better Housing Login</title>
+    <link rel="stylesheet" type="text/css">
+</head>
+
+{% block content %}
+
+<body>
+    <div id="login">
+        <div class="credentials">
+            <img src="https://eis.nova.edu/authenticationendpoint/nsu/nsu-logo.png" alt="Nova Southeastern University">
+            <form action="../loginpage/" method="post" id="loginForm" class="form-inline">
+                {% if error != None %}
+                <div class="alert alert-danger" id="error-msg">
+                    Login failed! Please recheck the username and password and try again.
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <input id="username" name="username" type="text" class="form-control" tabindex="1"
+                        placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input id="password" name="password" type="password" class="form-control" tabindex="2"
+                        placeholder="Password" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="sessionDataKey" value="01d87362-6e93-4c32-9db2-4e6ab2c42868">
+                </div>
+                <div class="form-actions">
+                    <button id="submitform" class="btn btn-default btn-block" type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+        <div id="footer">
+            <p><span id="iphone"></span>Check out our mobile app, <a href="http://www.nova.edu/ishark/index.html"
+                    target="_blank">iShark</a>.</p>
+            <p>
+                <a href="http://127.0.0.1:8000/register/" target="_blank">Register Account</a>
+            </p>
+            <p>When finished in application, remember to logout and close your Web browser.</p>
+        </div>
+    </div>
+
+</body>
+{% endblock %}
+
+</html>

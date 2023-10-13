@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html style="width:100%;height:100%;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolling Hills Room Selection</title>
+</head>
+<style>
+  .userinfo {
+    top: 5%;
+    right: 5%;
+    position: absolute;
+    text-align: center;
+  }
+
+  input[type='text'] {
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    outline: none;
+    width: 22px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0px;
+    color: #333;
+  }
+</style>
+{% block content %}
+<script text="text/javascript">
+  var select = false;
+  var prev;
+
+  //when page is first loaded with fetch all occupied rooms and change the color to red
+  function load(occupied){
+    for(var i = 0; i < occupied.length; i++){
+      document.getElementById(occupied[i]).style.fill = "red";
+    }
+  }
+//when search button is clicked will make current div hidden and change chosen div to inline
+  function search() {
+    var hidden = ["First Floor", "Second Floor", "Third Floor", "Fourth Floor", "Fifth Floor", "Sixth Floor", "Seventh Floor"];
+    var e = document.getElementById("floor");
+    var value = e.value;
+    var floorNum = e.options[e.selectedIndex].text;
+
+    for (var i = 0; i < hidden.length; i++) {
+      document.getElementById(hidden[i]).style.display = "none";
+    }
+    document.getElementById(floorNum).style.display = "inline";
+  }
+
+//when a bed is selected the color will change from green to blue, and room/bed number will be displayed
+//if the chosen bed is selected will return and nothing changes
+  function selected(num) {
+    var roomNum = num.substring(0, num.length - 1);
+    var bed = num[3];
+
+    if (document.getElementById(num).style.fill == "red") {
+      return;
+    }
+    if (select == true) {
+      document.getElementById(prev).style.fill = "limegreen";
+      document.getElementById(num).style.fill = "blue";
+      document.getElementById("R").value = roomNum;
+      document.getElementById("B").value = bed;
+    }
+    else {
+      document.getElementById(num).style.fill = "blue";
+      document.getElementById("R").value = roomNum;
+      document.getElementById("B").value = bed;
+    }
+    prev = num;
+    select = true;
+
+  }
+
+</script>
+{% endblock %}
+
+<body style="margin:0;" onload="load({{occupiedrooms}})">
+
+
+  <div class="userinfo">
+    <h3>First name, Last name</h3>
+    <h2>N NUMBER</h2>
+    <label for="floor">Choose a floor</label><br>
+    <select name="floor" id="floor">
+      <option value="1" selected>First Floor</option>
+      <option value="2">Second Floor</option>
+      <option value="3">Third Floor</option>
+      <option value="4">Fourth Floor</option>
+      <option value="5">Fifth Floor</option>
+      <option value="6">Sixth Floor</option>
+      <option value="7">Seventh Floor</option>
+    </select>
+    <input type="submit" value="Search" id="search" onclick="search()">
+
+    <hr>
+    <h3>Current Selection</h3>
+    <form action="../reviewpage/" method="post">
+      {% csrf_token %}
+      <input type="text" value="" id="R" name="R">
+      <input type="text" value="" name="B" id="B"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div class="First Floor" id="First Floor">
+    <svg height="700" width="1500">
+      <!--building outline-->
+      <polygon points="70,10 650,320 730,320 730,440 700,440 700,530 1190,530 1190,655 375,655 375,420 510,420 510,375 10,105" style="fill:lightgrey;stroke:black;stroke-width:2" />
+      <!-- Room outlines-->
+
+
+      <!--beds-->
+
+    </svg>
+  </div>
+
+  <div class="Second Floor" id="Second Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--building outline-->
+      <polygon points="70,10 650,320 730,320 730,440 700,440 700,530 1190,530 1190,655 375,655 375,420 510,420 510,375 10,105" style="fill:lightgrey;stroke:black;stroke-width:2" />
+      <!-- Room outlines-->
+
+
+      <!--beds-->
+
+    </svg>
+  </div>
+
+  <div class="Third Floor" id="Third Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--building outline-->
+      <polygon points="70,10 650,320 730,320 730,440 700,440 700,530 1190,530 1190,655 375,655 375,420 510,420 510,375 10,105" style="fill:lightgrey;stroke:black;stroke-width:2" />
+      <!-- Room outlines-->
+
+
+      <!--beds-->
+
+    </svg>
+  </div>
+
+  <div class="Fourth Floor" id="Fourth Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--building outline-->
+      <polygon points="70,10 650,320 730,320 730,440 700,440 700,530 1190,530 1190,655 375,655 375,420 510,420 510,375 10,105" style="fill:lightgrey;stroke:black;stroke-width:2" />
+      <!-- Room outlines-->
+
+
+      <!--beds-->
+
+    </svg>
+  </div>
+
+  <div class="Fifth Floor" id="Fifth Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--building outline-->
+      <polygon points="70,10 650,320 730,320 730,440 700,440 700,530 1190,530 1190,655 375,655 375,420 510,420 510,375 10,105" style="fill:lightgrey;stroke:black;stroke-width:2" />
+      <!-- Room outlines-->
+
+
+      <!--beds-->
+
+    </svg>
+  </div>
+
+  <div class="Sixth Floor" id="Sixth Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--building outline-->
+      <polygon points="70,10 650,320 730,320 730,440 700,440 700,530 1190,530 1190,655 375,655 375,420 510,420 510,375 10,105" style="fill:lightgrey;stroke:black;stroke-width:2" />
+      <!-- Room outlines-->
+
+
+      <!--beds-->
+
+    </svg>
+  </div>
+
+  <div class="Seventh Floor" id="Seventh Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--building outline-->
+      <polygon points="70,10 650,320 730,320 730,440 700,440 700,530 1190,530 1190,655 375,655 375,420 510,420 510,375 10,105" style="fill:lightgrey;stroke:black;stroke-width:2" />
+      <!-- Room outlines-->
+
+
+      <!--beds-->
+
+    </svg>
+  </div>
+</body>
+
+</html>

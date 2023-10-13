@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Home Page</title>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			position: fixed;
+		}
+		ul{
+		columns: 2;
+		list-style-type: none;
+		}
+		a{
+		text-decoration: none;
+		color:black;
+		font-size:160%;
+		letter-spacing: 3px;
+		}
+		li{
+		padding:2% 0px 2% 0px;
+		}
+		.namebox{
+			width:50%;
+			height:40%;
+			top: 0;
+			left: 0px;
+			position: absolute;
+			background-color:white;
+			border-radius: 10px;
+			padding:20px;
+		}
+		map{
+		position:absolute;
+		}
+		a:hover {
+  			color: lightgrey;
+  		}
+  		.name{
+  			font-size:125%;
+  		}
+  		p{
+  			font-size:170%;
+  			text-align:center;
+  			letter-spacing: 5px;
+  			margin-top:0px;
+  		}
+
+
+	</style>
+</head>
+{% block content %}
+<body>
+	<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.297/build/spline-viewer.js"></script>
+	<spline-viewer url="https://prod.spline.design/INw6suJQQ3L9BPFK/scene.splinecode"></spline-viewer>
+	<div class="namebox"><div class="name">Welcome, {{ username }}</div>
+		<p>Building Selections</p><hr>
+	<ul>
+		<li><a href="http://127.0.0.1:8000/clcrs/">Cultural Living Center</a></li>
+		<li><a href="http://127.0.0.1:8000/farquharrs/">Farquhar Apartments</a></li>
+		<li><a href="http://127.0.0.1:8000/foundersrs/">Founders Apartments</a></li>
+		<li><a href="http://127.0.0.1:8000/leogoodwinrs/">Leo Goodwin Sr. Hall</a></li>
+		<li><a href="http://127.0.0.1:8000/makors/">Mako Hall</a></li>
+		<li><a href="http://127.0.0.1:8000/rollingrs/">Rolling Hills Graduate</a></li>
+		<li><a href="http://127.0.0.1:8000/commonsrs/">The Commons</a></li>
+		<li><a href="http://127.0.0.1:8000/vettelrs/">Vettel Apartments</a></li>
+	</ul>
+	</div>
+
+
+</body>
+{% endblock %}
+
+</html>

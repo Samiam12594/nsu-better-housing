@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farquhar Room Selection</title>
+</head>
+<style>
+  .userinfo {
+    top: 5%;
+    right: 5%;
+    position: absolute;
+    text-align: center;
+  }
+
+  input[type='text'] {
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    outline: none;
+    width: 22px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 0px;
+    color: #333;
+  }
+</style>
+{% block content %}
+<script>
+  var select = false;
+  var prev;
+
+  //when page is first loaded with fetch all occupied rooms and change the color to red
+  function load(occupied){
+    for(var i = 0; i < occupied.length; i++){
+      document.getElementById(occupied[i]).style.fill = "red";
+    }
+  }
+//when search button is clicked will make current div hidden and change chosen div to inline
+  function search() {
+    var hidden = ["First Floor", "Second Floor", "Third Floor"];
+    var e = document.getElementById("floor");
+    var value = e.value;
+    var floorNum = e.options[e.selectedIndex].text;
+
+    for (var i = 0; i < hidden.length; i++) {
+      document.getElementById(hidden[i]).style.display = "none";
+    }
+    document.getElementById(floorNum).style.display = "inline";
+  }
+
+//when a bed is selected the color will change from green to blue, and room/bed number will be displayed
+//if the chosen bed is selected will return and nothing changes
+  function selected(num) {
+    var roomNum = num.substring(0, num.length - 1);
+    var bed = num[3];
+
+    if (document.getElementById(num).style.fill == "red") {
+      return;
+    }
+    if (select == true) {
+      document.getElementById(prev).style.fill = "limegreen";
+      document.getElementById(num).style.fill = "blue";
+      document.getElementById("R").value = roomNum;
+      document.getElementById("B").value = bed;
+    }
+    else {
+      document.getElementById(num).style.fill = "blue";
+      document.getElementById("R").value = roomNum;
+      document.getElementById("B").value = bed;
+    }
+    prev = num;
+    select = true;
+
+  }
+
+</script>
+
+<body style="margin:0;" onload="load({{occupiedrooms}})">
+
+  <div class = "userinfo">
+  <h3>{{ firstname }}, {{ lastname }}</h3>
+  <h2>{{ nnumber }}</h2>
+  <label for="floor">Choose a floor</label><br>
+  <select name="floor" id="floor">
+    <option value="1" selected>First Floor</option>
+    <option value="2">Second Floor</option>
+    <option value="3">Third Floor</option>
+  </select>
+  <input type="submit" value="Search" id="search" onclick="search()">
+
+  <hr>
+  <h3>Current Selection</h3>
+  <form action="../reviewpage/" method="post">
+    {% csrf_token %}
+    <input type="text" value="" id="R" name="R">
+    <input type="text" value="" name="B" id="B"><br>
+    <input type="submit" value="Submit">
+  </form>
+  </div>
+
+  <div class="First Floor" id="First Floor">
+    <svg height="700" width="1500">
+      <!--VFF building outline-->
+      <polygon points="30,40 1190,40 1190,600 30,600" style="fill:lightgrey;stroke:black;stroke-width:2" />
+
+
+      <polyline points="30,280 1190,280" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="30,360 1190,360" style="fill:none;stroke:black;stroke-width:2" />
+
+      <polyline points="262,280 262,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="494,280 494,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="726,280 726,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="958,280 958,40" style="fill:none;stroke:black;stroke-width:2" />
+
+      <polyline points="262,360 262,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="494,360 494,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="726,360 726,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="958,360 958,600" style="fill:none;stroke:black;stroke-width:2" />
+
+
+      <!--RM 101-->
+      <!--101A-->
+      <polygon id="101A" points="30,40 90,40 90,130 30,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 102-->
+      <!--102A-->
+      <polygon id="102A" points="30,510 90,510 90,600 30,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--102B-->
+      <polygon id="102B" points="262,510 202,510 202,600 262,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 103-->
+      <!--103A-->
+      <polygon id="103A" points="262,40 322,40 322,130 262,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 104-->
+      <!--104A-->
+      <polygon id="104A" points="262,510 322,510 322,600 262,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--104B-->
+      <polygon id="104B" points="494,510 434,510 434,600 494,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 105-->
+      <!--105A-->
+      <polygon id="105A" points="494,40 554,40 554,130 494,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+
+      <!--RM 106-->
+      <!--106A-->
+      <polygon id="106A" points="494,510 554,510 554,600 494,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--106B-->
+      <polygon id="106B" points="726,510 666,510 666,600 726,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 107-->
+      <!--107A-->
+      <polygon id="107A" points="726,40 786,40 786,130 726,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 108-->
+      <!--108A-->
+      <polygon id="108A" points="726,510 786,510 786,600 726,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--108B-->
+      <polygon id="108B" points="958,510 898,510 898,600 958,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 109-->
+      <!--109A-->
+      <polygon id="109A" points="958,40 1018,40 1018,130 958,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 110-->
+      <!--110A-->
+      <polygon id="110A" points="958,510 1018,510 1018,600 958,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--110B-->
+      <polygon id="110B" points="1190,510 1130,510 1130,600 1190,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+
+
+
+
+      <text x="130" y="170" style="font:20px sans-serif;">101</text>
+      <text x="365" y="170" style="font:20px sans-serif;">103</text>
+      <text x="600" y="170" style="font:20px sans-serif;">105</text>
+      <text x="825" y="170" style="font:20px sans-serif;">107</text>
+      <text x="1060" y="170" style="font:20px sans-serif;">109</text>
+
+      <text x="130" y="470" style="font:20px sans-serif;">102</text>
+      <text x="365" y="470" style="font:20px sans-serif;">104</text>
+      <text x="600" y="470" style="font:20px sans-serif;">106</text>
+      <text x="825" y="470" style="font:20px sans-serif;">108</text>
+      <text x="1060" y="470" style="font:20px sans-serif;">110</text>
+    </svg>
+  </div>
+
+  <div class="Second Floor" id="Second Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--VFF building outline-->
+      <polygon points="30,40 1190,40 1190,600 30,600" style="fill:lightgrey;stroke:black;stroke-width:2" />
+
+
+      <polyline points="30,280 1190,280" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="30,360 1190,360" style="fill:none;stroke:black;stroke-width:2" />
+
+      <polyline points="262,280 262,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="494,280 494,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="726,280 726,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="958,280 958,40" style="fill:none;stroke:black;stroke-width:2" />
+
+      <polyline points="262,360 262,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="494,360 494,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="726,360 726,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="958,360 958,600" style="fill:none;stroke:black;stroke-width:2" />
+
+
+      <!--RM 101-->
+      <!--101A-->
+      <polygon id="201A" points="30,40 90,40 90,130 30,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 102-->
+      <!--102A-->
+      <polygon id="202A" points="30,510 90,510 90,600 30,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--102B-->
+      <polygon id="202B" points="262,510 202,510 202,600 262,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 103-->
+      <!--103A-->
+      <polygon id="203A" points="262,40 322,40 322,130 262,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 104-->
+      <!--104A-->
+      <polygon id="204A" points="262,510 322,510 322,600 262,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--104B-->
+      <polygon id="204B" points="494,510 434,510 434,600 494,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 105-->
+      <!--105A-->
+      <polygon id="205A" points="494,40 554,40 554,130 494,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+
+      <!--RM 106-->
+      <!--106A-->
+      <polygon id="206A" points="494,510 554,510 554,600 494,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--106B-->
+      <polygon id="206B" points="726,510 666,510 666,600 726,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 107-->
+      <!--107A-->
+      <polygon id="207A" points="726,40 786,40 786,130 726,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 108-->
+      <!--108A-->
+      <polygon id="208A" points="726,510 786,510 786,600 726,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--108B-->
+      <polygon id="208B" points="958,510 898,510 898,600 958,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 109-->
+      <!--109A-->
+      <polygon id="209A" points="958,40 1018,40 1018,130 958,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 110-->
+      <!--110A-->
+      <polygon id="210A" points="958,510 1018,510 1018,600 958,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--110B-->
+      <polygon id="210B" points="1190,510 1130,510 1130,600 1190,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+
+
+      <text x="130" y="170" style="font:20px sans-serif;">201</text>
+      <text x="365" y="170" style="font:20px sans-serif;">203</text>
+      <text x="600" y="170" style="font:20px sans-serif;">205</text>
+      <text x="825" y="170" style="font:20px sans-serif;">207</text>
+      <text x="1060" y="170" style="font:20px sans-serif;">209</text>
+
+      <text x="130" y="470" style="font:20px sans-serif;">202</text>
+      <text x="365" y="470" style="font:20px sans-serif;">204</text>
+      <text x="600" y="470" style="font:20px sans-serif;">206</text>
+      <text x="825" y="470" style="font:20px sans-serif;">208</text>
+      <text x="1060" y="470" style="font:20px sans-serif;">210</text>
+    </svg>
+  </div>
+
+  <div class="Third Floor" id="Third Floor" style="display:none;">
+    <svg height="700" width="1500">
+      <!--VFF building outline-->
+      <polygon points="30,40 1190,40 1190,600 30,600" style="fill:lightgrey;stroke:black;stroke-width:2" />
+
+
+      <polyline points="30,280 1190,280" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="30,360 1190,360" style="fill:none;stroke:black;stroke-width:2" />
+
+      <polyline points="262,280 262,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="494,280 494,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="726,280 726,40" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="958,280 958,40" style="fill:none;stroke:black;stroke-width:2" />
+
+      <polyline points="262,360 262,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="494,360 494,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="726,360 726,600" style="fill:none;stroke:black;stroke-width:2" />
+      <polyline points="958,360 958,600" style="fill:none;stroke:black;stroke-width:2" />
+
+
+      <!--RM 101-->
+      <!--101A-->
+      <polygon id="301A" points="30,40 90,40 90,130 30,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 102-->
+      <!--102A-->
+      <polygon id="302A" points="30,510 90,510 90,600 30,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--102B-->
+      <polygon id="302B" points="262,510 202,510 202,600 262,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 103-->
+      <!--103A-->
+      <polygon id="303A" points="262,40 322,40 322,130 262,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 104-->
+      <!--104A-->
+      <polygon id="304A" points="262,510 322,510 322,600 262,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--104B-->
+      <polygon id="304B" points="494,510 434,510 434,600 494,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--RM 105-->
+      <!--105A-->
+      <polygon id="305A" points="494,40 554,40 554,130 494,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+
+      <!--RM 106-->
+      <!--106A-->
+      <polygon id="306A" points="494,510 554,510 554,600 494,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--106B-->
+      <polygon id="306B" points="726,510 666,510 666,600 726,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 107-->
+      <!--107A-->
+      <polygon id="307A" points="726,40 786,40 786,130 726,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 108-->
+      <!--108A-->
+      <polygon id="308A" points="726,510 786,510 786,600 726,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--108B-->
+      <polygon id="308B" points="958,510 898,510 898,600 958,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 109-->
+      <!--109A-->
+      <polygon id="309A" points="958,40 1018,40 1018,130 958,130" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+      <!--RM 110-->
+      <!--110A-->
+      <polygon id="310A" points="958,510 1018,510 1018,600 958,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+      <!--110B-->
+      <polygon id="310B" points="1190,510 1130,510 1130,600 1190,600" onclick="selected(id)"
+        style="fill:limegreen;stroke:black;stroke-width:2" />
+
+
+
+
+
+      <text x="130" y="170" style="font:20px sans-serif;">301</text>
+      <text x="365" y="170" style="font:20px sans-serif;">303</text>
+      <text x="600" y="170" style="font:20px sans-serif;">305</text>
+      <text x="825" y="170" style="font:20px sans-serif;">307</text>
+      <text x="1060" y="170" style="font:20px sans-serif;">309</text>
+
+      <text x="130" y="470" style="font:20px sans-serif;">302</text>
+      <text x="365" y="470" style="font:20px sans-serif;">304</text>
+      <text x="600" y="470" style="font:20px sans-serif;">306</text>
+      <text x="825" y="470" style="font:20px sans-serif;">308</text>
+      <text x="1060" y="470" style="font:20px sans-serif;">310</text>
+    </svg>
+
+
+  </div>
+
+</body>
+{% endblock %}
+
+</html>

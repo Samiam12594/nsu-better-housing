@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commons Room Selection</title>
+</head>
+<script text="text/javascript">
+  var select = false;
+  var prev;
+
+  //when page is first loaded with fetch all occupied rooms and change the color to red
+  function load(occupied){
+    for(var i = 0; i < occupied.length; i++){
+      document.getElementById(occupied[i]).style.fill = "red";
+    }
+  }
+
+//when search button is clicked will make current div hidden and change chosen div to inline
+  function search() {
+    var hidden = ["First Floor", "Second Floor", "Third Floor", "Fourth Floor", "Fifth Floor", "Sixth Floor", "Seventh Floor"];
+    var e = document.getElementById("floor");
+    var value = e.value;
+    var floorNum = e.options[e.selectedIndex].text;
+
+    for (var i = 0; i < hidden.length; i++) {
+      document.getElementById(hidden[i]).style.display = "none";
+    }
+    document.getElementById(floorNum).style.display = "inline";
+  }
+
+//when a bed is selected the color will change from green to blue, and room/bed number will be displayed
+//if the chosen bed is selected will return and nothing changes
+  function selected(num) {
+    var roomNum = num.substring(0, num.length - 1);
+    var bed = num[3];
+
+    if (document.getElementById(num).style.fill == "red") {
+      return;
+    }
+    if (select == true) {
+      document.getElementById(prev).style.fill = "limegreen";
+      document.getElementById(num).style.fill = "blue";
+      document.getElementById("R").value = roomNum;
+      document.getElementById("B").value = bed;
+    }
+    else {
+      document.getElementById(num).style.fill = "blue";
+      document.getElementById("R").value = roomNum;
+      document.getElementById("B").value = bed;
+    }
+    prev = num;
+    select = true;
+
+  }
+
+</script>
+<body style="margin:0;" onload="load({{occupiedrooms}})">
+    <h1>Commons Room Selection</h1>
+</body>
+
+</html>

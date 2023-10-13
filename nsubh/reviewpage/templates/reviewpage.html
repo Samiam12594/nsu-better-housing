@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+        background: #003893; //url("https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Ymx1ZSUyMHBhdHRlcm58ZW58MHx8MHx8&w=1000&q=80") no-repeat center center fixed;
+        webkit-background-size: cover;
+        background-size: cover;
+        font-size: 1em;
+        text-align: center;
+    }
+    #container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 100px;
+        padding-right: 100px;
+        background-color: white;
+        max-width: 70%;
+        border: 3px solid black;
+    }
+    .Header {
+        font-size: 4em;
+    }
+    .Warning {
+        font-style: italic;
+        line-height: 2;
+    }
+    .User-info info {
+        font-weight: bold;
+    }
+    .Room-info room {
+        font-weight: bold;
+    }
+    .review-btn {
+        background-color: lightgrey;
+        border: 0pt;
+        margin: 5pt;
+        padding: 10px 40px;
+        font-size: 14pt;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Review Page</title>
+</head>
+
+{% block content %}
+
+<body>
+    <div id="container">
+        <form action="../completionpage/" method="post" id="loginForm" class="form-inline">
+            <div class="Header">
+                <p>Review</p>
+            </div>
+            <div class="Warning">
+                <p>Warning! Be careful to read over this page to ensure the information displayed it correct.<br>
+                    When selecting a room, it's important to read through all the details carefully before clicking the
+                    submit button. This is because once you submit your room selection, it may be difficult to make
+                    changes or cancel your current choice. Take the time to review the room type, bed size, roommates,
+                    and any additional information. If you have any questions or concerns, don't hesitate to contact
+                    housing@nova.edu for clarification.</p>
+
+                <p>Additionally, it's important to double-check the dates of your room selection. Make sure the semester
+                    dates are accurate and that you are not accidentally selecting the wrong dates. This can save you
+                    the hassle of having to make changes or cancel your room selection altogether.</p>
+
+                <p>Before submitting your room selection, also take the time to review the cancellation policy.
+                    Understand the terms and conditions of cancelling your room selection, including any fees or
+                    penalties that may apply.
+
+                    Lastly, make sure to review the total cost of your room selection, including any taxes and fees.
+                    Check that the final price is within your budget and that you have selected the correct payment
+                    method. Once you have carefully reviewed all the details, you can confidently click the submit
+                    button.</p>
+            </div>
+            <div class="User-info">
+                <p>User Information<info><br>N Number: {{ nnumber }} <br>Name: {{ username }}
+                        <br>Email: {{ email }}
+                    </info>
+                </p>
+            </div>
+            <div class="Room-info">
+                <p>Room Selection<room><br>Room Number: {{ roomnumber }} <br>Bed: {{ bed }}<br>Building: {{ building }}
+                    </room>
+                </p>
+            </div>
+            <div class="Warning">
+                <p>As a final reminder, make sure to read through all the details carefully before submitting your room
+                    selection. Remember, once you click the submit button, it may be difficult to make changes or cancel
+                    your room selection.</p>
+                <p>By clicking this submit button you ensure that all information displayed is correct.
+                    <br>If you have any questions or concerns, please do not hesitate to contact us at housing@nova.edu.
+                </p>
+            </div>
+            <button id="submitBtn" class="review-btn" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+{% endblock %}
+
+</html>

@@ -1,0 +1,361 @@
+[{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732776a"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "101",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732776b"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "102",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732776c"
+  },
+  "Bed": "B",
+  "Floor": "1",
+  "Room": "102",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732776d"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "103",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732776e"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "104",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732776f"
+  },
+  "Bed": "B",
+  "Floor": "1",
+  "Room": "104",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327770"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "105",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327771"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "106",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327772"
+  },
+  "Bed": "B",
+  "Floor": "1",
+  "Room": "106",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327773"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "107",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327774"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "108",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327775"
+  },
+  "Bed": "B",
+  "Floor": "1",
+  "Room": "108",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327776"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "109",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327777"
+  },
+  "Bed": "A",
+  "Floor": "1",
+  "Room": "110",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327778"
+  },
+  "Bed": "B",
+  "Floor": "1",
+  "Room": "110",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327779"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "201",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732777a"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "202",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732777b"
+  },
+  "Bed": "B",
+  "Floor": "2",
+  "Room": "202",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732777c"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "203",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732777d"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "204",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732777e"
+  },
+  "Bed": "B",
+  "Floor": "2",
+  "Room": "204",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732777f"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "205",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327780"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "206",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327781"
+  },
+  "Bed": "B",
+  "Floor": "2",
+  "Room": "206",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327782"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "207",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327783"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "208",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327784"
+  },
+  "Bed": "B",
+  "Floor": "2",
+  "Room": "208",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327785"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "209",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327786"
+  },
+  "Bed": "A",
+  "Floor": "2",
+  "Room": "210",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327787"
+  },
+  "Bed": "B",
+  "Floor": "2",
+  "Room": "210",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327788"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "301",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327789"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "302",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732778a"
+  },
+  "Bed": "B",
+  "Floor": "3",
+  "Room": "302",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732778b"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "303",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732778c"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "304",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732778d"
+  },
+  "Bed": "B",
+  "Floor": "3",
+  "Room": "304",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732778e"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "305",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e05732778f"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "306",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327790"
+  },
+  "Bed": "B",
+  "Floor": "3",
+  "Room": "306",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327791"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "307",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327792"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "308",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327793"
+  },
+  "Bed": "B",
+  "Floor": "3",
+  "Room": "308",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327794"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "309",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327795"
+  },
+  "Bed": "A",
+  "Floor": "3",
+  "Room": "310",
+  "Occupied": "F"
+},{
+  "_id": {
+    "$oid": "6429ec87be1d35e057327796"
+  },
+  "Bed": "B",
+  "Floor": "3",
+  "Room": "310",
+  "Occupied": "F"
+}]

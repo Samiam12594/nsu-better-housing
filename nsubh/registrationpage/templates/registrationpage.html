@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="registrationstyle.css">
+</head>
+<style>
+    body {
+        background: #003893 url("https://pbs.twimg.com/media/FUvzkIWWAAAlVvN.jpg:large") no-repeat center center fixed;
+        webkit-background-size: cover;
+        background-size: cover;
+        font-size: .9em;
+    }
+    #login,
+    .contentBox {
+        margin-top: 8%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
+        height: auto;
+        padding: 1em;
+        background: #000099;
+        background: rgba(0, 0, 153, 0.85);
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+    }
+    form input[type="text"],
+    form input[type="password"],
+    form input[type="email"] {
+        width: 97%;
+        height: 30px;
+        padding-left: 15px;
+        font-size: 1.2em;
+        color: #666D70;
+        border: 1px solid #666D70;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-box-shadow: 0px 0px 1px #666d70;
+        box-shadow: 0px 0px 1px #666d70;
+    }
+    form input {
+        margin-bottom: 8px;
+        display: block;
+    }
+    #footer a {
+        color: #fff;
+    }
+    a {
+        color: #337ab7;
+        text-decoration: none;
+    }
+    select {
+        margin-bottom: 8px;
+        width: 100%;
+    }
+    .credentials .btn {
+        font-weight: bold;
+        background: #687379;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        word-spacing: 4px;
+    }
+    .btn-block {
+        display: block;
+        width: 100%;
+    }
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font: inherit;
+        color: inherit;
+    }
+    .alert {
+        margin-bottom: 8px;
+    }
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+    .alert-error {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        padding: 5px;
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+    .credentials img {
+        display: block;
+        height: auto;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 260px;
+    }
+</style>
+{% block content %}
+
+<body>
+    <div id="login">
+        <div class="credentials">
+            <img src="https://eis.nova.edu/authenticationendpoint/nsu/nsu-logo.png" alt="Nova Southeastern University">
+            <form method="post" id="loginForm" class="form-inline">
+                {% csrf_token %}
+                {%if username == "!" or password == "!" %}
+                <div class="alert alert-danger" id="error-msg">Registration failed! Please recheck the length of the
+                    password (8 Characters) and the email and try again.
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <input id="firstname" name="firstname" type="text" class="form-control" placeholder="First Name"
+                        autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input id="lastname" name="lastname" type="text" class="form-control" placeholder="Last Name"
+                        autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input id="n#" name="n#" type="text" class="form-control" placeholder="N Number (Start with N)"
+                        autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input id="username" name="username" type="text" class="form-control" tabindex="0"
+                        placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password"
+                        autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <input id="email" name="email" type="email" class="form-control" tabindex="0" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="sessionDataKey" value="01d87362-6e93-4c32-9db2-4e6ab2c42868">
+                </div>
+                <select id="year" name="year" class="select-inline" tabindex="2">
+                    <option value="" disabled selected>Current Year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option>
+                    <option value="5">Post Graduate</option>
+                </select>
+
+                <div class="form-actions">
+                    <button id="submitform" class="btn btn-default btn-block" type="submit">Register</button>
+                    <input disabled="disabled" value="Authenticating" class="btn btn-default btn-block"
+                        style="display:none" tabindex="3" type="button">
+                </div>
+            </form>
+            {% endblock %}
+        </div>
+        <!--<div id="footer">
+            <div class="alert-error" id="error-msg">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
+        </div>
+        -->
+    </div>
+    </div>
+
+</body>
+
+</html>

@@ -4,9 +4,11 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from pymongo import MongoClient
 from homepage import views
+import os
 
-# Establish connnection to database
-client = MongoClient("mongodb://localhost:27017")
+# Establish connection to database
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongo:27017")
+client = MongoClient(MONGO_URI)
 nsubh = client["NSUBH"]
 
 userNameStored = ''

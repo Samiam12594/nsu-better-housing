@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:8.2
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  seed:
+    image: mongo:8.2
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - ./datasets:/datasets:ro
+    command:
+      - sh
+      - -c
+      - |
+        set -e
+        files=/datasets/*.json
+        if [ ! -e $$files ]; then
+          echo "No dataset files found in /datasets"
+          exit 1
+        fi
+        for f in $$files; do
+          c=$$(basename "$$f" .json)
+          mongoimport --host mongo --db NSUBH --collection "$$c" --jsonArray "$$f"
+        done
+    restart: "no"
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017
+    depends_on:
+      mongo:
+        condition: service_healthy
+      seed:
+        condition: service_completed_successfully
+
+volumes:
+  mongo-data:

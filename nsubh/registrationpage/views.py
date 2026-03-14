@@ -1,5 +1,6 @@
 import datetime
 import dbm
+import os
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
@@ -9,7 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Initializing Database
 USERNAME = ''
-client = MongoClient("mongodb://localhost:27017")
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongo:27017")
+client = MongoClient(MONGO_URI)
 nsubh = client["NSUBH"]
 
 

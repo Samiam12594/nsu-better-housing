@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from django.template import loader
 from pymongo import MongoClient
 from loginpage.views import loginpage
+import os
 
 # Establish connection to database
-client = MongoClient("mongodb://localhost:27017")
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongo:27017")
+client = MongoClient(MONGO_URI)
 nsubh = client["NSUBH"]
 
 # Load Mako. Check if any beds are occupied from database collection

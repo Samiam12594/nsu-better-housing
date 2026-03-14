@@ -5,8 +5,10 @@ from django.views.decorators.csrf import csrf_exempt
 from pymongo import MongoClient
 from reviewpage.views import reviewpage
 from loginpage.views import loginpage
+import os
 
-client = MongoClient("mongodb://localhost:27017")
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://mongo:27017")
+client = MongoClient(MONGO_URI)
 nsubh = client["NSUBH"]
 
 # Load the completion page

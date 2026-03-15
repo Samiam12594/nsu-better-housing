@@ -15,6 +15,8 @@
    ```
 3. Open `http://localhost:8000/` in your browser. The MongoDB container is seeded automatically from `datasets/*.json`.
    - MongoDB is exposed on host port `27018` to avoid conflicts with a locally running `mongod`.
+4. To access the database and its contents, copy+paste this URI into browser: `mongodb://localhost:27018`
+   1. You MUST have MongoDB Compass installed in order for this to work (see Pre-requisites)
 
 ## Running natively (legacy)
 1. Please ensure MongoDB Compass is open and running properly, as the datasets will be inserted to the Database.
